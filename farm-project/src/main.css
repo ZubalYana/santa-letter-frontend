@@ -111,4 +111,27 @@ a {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter_container img {
+  width: 73%;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+}
+
+.letter_textWrapper {
+  position: absolute;
+  z-index: 999;
+  top: 80px;
+  left: 110px;
+}
+
+.letter_textWrapper .letter_text {
+  font-family: Caveat;
+  font-size: 20px;
+  width: 70%;
 }

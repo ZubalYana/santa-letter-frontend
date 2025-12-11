@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import AutoComplete from "@mui/material/Autocomplete";
 import { FormControlLabel, Switch } from "@mui/material";
@@ -60,6 +60,20 @@ export function Main() {
     "Chocolate",
     "Book",
   ];
+  const letterText = `
+I've been looking forward to these 
+holidays the entire year! 
+I promise I was a good kid 😊
+Here is my phone number: ${form.phone || "—"}
+Here is my address:
+${form.address.city || ""} ${form.address.street || ""} ${form.address.house || ""} ${form.address.apartment ? `apt. ${form.address.apartment}` : ""
+    }
+${form.address.elevator ? "(elevator available)" : ""}
+My wishes:
+${form.wishes.length ? form.wishes.join(", ") : "—"}
+
+                          Yours sincerely, ${form.name || "—"}
+`;
 
   return (
     <>
@@ -78,12 +92,14 @@ export function Main() {
               variant="outlined"
               fullWidth
               sx={borderStyle}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
             <TextField
               label="Your Phone Number"
               variant="outlined"
               fullWidth
               sx={borderStyle}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
             />
 
             <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
@@ -99,6 +115,7 @@ export function Main() {
                 renderInput={(params) => (
                   <TextField {...params} label="City" sx={{ width: "150px", ...borderStyle }} />
                 )}
+
               />
               <TextField
                 label="Street"
@@ -189,6 +206,11 @@ export function Main() {
           </div>
 
           <div className="letter_container">
+            <img src="./letter.png" alt="letter" />
+            <div className="letter_textWrapper">
+              <pre className="letter_text">{letterText}</pre>
+            </div>
+
           </div>
         </div>
 
